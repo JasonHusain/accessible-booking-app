@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 //BookingForm component
-function BookingForm({ onBookingSubmit }) {
+function BookingForm({ practitionersList, timesList, onBookingSubmit }) {
   // First Name
   const [firstName, setFirstName] = useState("");
 
@@ -16,7 +16,6 @@ function BookingForm({ onBookingSubmit }) {
     setLastName(event.target.value);
   }
 
-  //Practitioner
   const [practitioner, setPractitioner] = useState("");
 
   function handlePractitioner(event) {
@@ -84,11 +83,13 @@ function BookingForm({ onBookingSubmit }) {
           onChange={handlePractitioner}
           required
         >
-          <option value=""> -- Select a Practitioner -- </option>
-          <option value="alex-robertson">Dr. Alex Robertson </option>
-          <option value="penelope-smith">Dr. Penelope Smith</option>
-          <option value="sara-khan">Dr. Sara Khan </option>
-          <option value="baljit-singh">Dr. Baljit Singh </option>
+          {" "}
+          <option value=""> -- Select a Practitioner </option>
+          {practitionersList.map((practitioner) => (
+            <option key={practitioner.value} value={practitioner.value}>
+              {practitioner.label}{" "}
+            </option>
+          ))}{" "}
         </select>
         {/* Date */}
         <label htmlFor="appointmentDate"> Date </label>
@@ -112,16 +113,19 @@ function BookingForm({ onBookingSubmit }) {
           <option value="">-- Select a Time --</option>
 
           <optgroup label="Morning">
-            <option value="09:00">9:00 AM</option>
-            <option value="10:00">10:00 AM</option>
-            <option value="11:00">11:00 AM</option>
+            {" "}
+            {timesList.slice(0, 4).map((appointmentTime) => (
+              <option key={appointmentTime.value} value={appointmentTime.value}>
+                {appointmentTime.label}{" "}
+              </option>
+            ))}{" "}
           </optgroup>
-
           <optgroup label="Afternoon">
-            <option value="12:00">12:00 PM</option>
-            <option value="13:00">1:00 PM</option>
-            <option value="14:00">2:00 PM</option>
-            <option value="15:00">3:00 PM</option>
+            {timesList.slice(4, 8).map((appointmentTime) => (
+              <option key={appointmentTime.value} value={appointmentTime.value}>
+                {appointmentTime.label}{" "}
+              </option>
+            ))}{" "}
           </optgroup>
         </select>
 

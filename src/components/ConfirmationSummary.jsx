@@ -1,4 +1,4 @@
-function ConfirmationSummary({ booking }) {
+function ConfirmationSummary({ practitionersList, timesList, booking }) {
   if (!booking) {
     return null;
   }
@@ -11,6 +11,14 @@ function ConfirmationSummary({ booking }) {
     appointmentTime
   } = booking;
 
+  const practitionerName = practitionersList.find(
+    (practitioner) => practitioner.value === booking.practitioner
+  )?.label;
+
+  const bookedTime = timesList.find(
+    (time) => time.value === booking.appointmentTime
+  )?.label;
+
   return (
     <section>
       {" "}
@@ -21,9 +29,9 @@ function ConfirmationSummary({ booking }) {
           <ul>
             <li> First Name: {firstName} </li>
             <li>Last Name: {lastName}</li>
-            <li>Practitioner: {practitioner}</li>
+            <li>Practitioner: {practitionerName}</li>
             <li>Date: {appointmentDate}</li>
-            <li>Time: {appointmentTime}</li>
+            <li>Time: {bookedTime}</li>
           </ul>{" "}
         </>
       )}{" "}
