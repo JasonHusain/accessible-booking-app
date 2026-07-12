@@ -1,13 +1,12 @@
 import { useState } from "react";
 
 //BookingForm component
-function BookingForm() {
+function BookingForm({ onBookingSubmit }) {
   // First Name
   const [firstName, setFirstName] = useState("");
 
   function handleFirstName(event) {
     setFirstName(event.target.value);
-    console.log(event.target.value);
   }
 
   //Last Name
@@ -15,7 +14,6 @@ function BookingForm() {
 
   function handleLastName(event) {
     setLastName(event.target.value);
-    console.log(event.target.value);
   }
 
   //Practitioner
@@ -23,7 +21,6 @@ function BookingForm() {
 
   function handlePractitioner(event) {
     setPractitioner(event.target.value);
-    console.log(event.target.value);
   }
 
   //Appointment Date
@@ -31,7 +28,6 @@ function BookingForm() {
 
   function handleAppointmentDate(event) {
     setAppointmentDate(event.target.value);
-    console.log(event.target.value);
   }
 
   //Appointment Time
@@ -39,14 +35,27 @@ function BookingForm() {
 
   function handleAppointmentTime(event) {
     setAppointmentTime(event.target.value);
-    console.log(event.target.value);
+  }
+
+  //Form submission handler
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    const booking = {
+      firstName,
+      lastName,
+      practitioner,
+      appointmentDate,
+      appointmentTime
+    };
+
+    onBookingSubmit(booking);
   }
 
   return (
     <section>
       <h2> Appointment Details </h2>
 
-      <form>
+      <form onSubmit={handleFormSubmission}>
         {/* Patient Name */}
         <label htmlFor="firstName">First Name</label>
         <input
