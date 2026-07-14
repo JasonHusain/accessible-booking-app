@@ -1,6 +1,7 @@
 import { useState } from "react";
 import BookingForm from "./components/BookingForm";
 import ConfirmationSummary from "./components/ConfirmationSummary";
+import "./App.css";
 
 function App() {
   //Practitioner
@@ -31,8 +32,8 @@ function App() {
 
   return (
     <main>
-      <h1> Book An Appointment </h1>
-      <p> Inclusive Care Health Centre </p>
+      <h1 className="booking-invitation"> Book An Appointment </h1>
+      <p className="clinic-name"> Inclusive Care Health Centre </p>
       <BookingForm
         practitionersList={practitioners}
         timesList={times}

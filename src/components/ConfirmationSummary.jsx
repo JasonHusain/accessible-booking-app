@@ -1,3 +1,6 @@
+import { useState } from "react";
+import "./ConfirmationSummary.css";
+
 function ConfirmationSummary({ practitionersList, timesList, booking }) {
   if (!booking) {
     return null;
@@ -20,15 +23,16 @@ function ConfirmationSummary({ practitionersList, timesList, booking }) {
   )?.label;
 
   return (
-    <section>
+    <section className="confirmation-summary">
       {" "}
       {booking && (
         <>
           {" "}
-          <h2> Appointment Summary </h2>
-          <ul>
-            <li> First Name: {firstName} </li>
-            <li>Last Name: {lastName}</li>
+          <h2 className="confirmation-heading"> Appointment Summary </h2>
+          <ul className="confirmation-details">
+            <li>
+              Patient Name: {firstName} {lastName}
+            </li>
             <li>Practitioner: {practitionerName}</li>
             <li>Date: {appointmentDate}</li>
             <li>Time: {bookedTime}</li>

@@ -1,0 +1,62 @@
+.appointment-details-heading {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.booking-form {
+  max-width: 32rem;
+  margin: 0 auto;
+}
+
+.booking-form label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-size: clamp(1rem 2vw 1.2rem);
+  font-weight: bold;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form button {
+  width: 100%;
+  border: 3px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 0.75rem;
+  border-radius: 0.5;
+  background-color: black;
+}
+
+.booking-form input,
+.booking-form select {
+  background-color: yellow;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Hover and focus classes for inputs and dropdowns */
+.booking-form input:focus,
+.booking-form select:focus {
+  background-color: black;
+  color: white;
+  outline: 3px solid black;
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .booking-form input:hover,
+  .booking-form select:hover {
+    background-color: black;
+    color: white;
+  }
+}
+.booking-form button {
+  border-radius: 5px;
+  font-weight: bold;
+  color: white;
+  background-color: #006400;
+  margin-top: 1.5rem;
+}

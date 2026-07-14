@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import "./BookingForm.css";
 
 //BookingForm component
 function BookingForm({ practitionersList, timesList, onBookingSubmit }) {
@@ -48,16 +49,30 @@ function BookingForm({ practitionersList, timesList, onBookingSubmit }) {
     };
 
     onBookingSubmit(booking);
+
+    //Reset form fields
+    setFirstName("");
+    setLastName("");
+    setPractitioner("");
+    setAppointmentDate("");
+    setAppointmentTime("");
   }
+
+  const firstNameRef = useRef(null);
+
+  useEffect(() => {
+    firstNameRef.current.focus();
+  }, []);
 
   return (
     <section>
-      <h2> Appointment Details </h2>
+      <h2 className="appointment-details-heading"> Appointment Details </h2>
 
-      <form onSubmit={handleFormSubmission}>
+      <form className="booking-form" onSubmit={handleFormSubmission}>
         {/* Patient Name */}
         <label htmlFor="firstName">First Name</label>
         <input
+          ref={firstNameRef}
           type="text"
           id="firstName"
           name="firstName"
@@ -130,7 +145,7 @@ function BookingForm({ practitionersList, timesList, onBookingSubmit }) {
         </select>
 
         {/* Submit Button */}
-        <button type="submit">Book Appointment</button>
+        <button type="submit">BOOK APPOINTMENT</button>
       </form>
     </section>
   );
