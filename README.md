@@ -4,7 +4,7 @@ An accessible React application for booking medical appointments. This project d
 
 ## Live Demo
 
-View the deployed application here:
+View the deployed application here: https://accessible-booking-app.vercel.app/
 
 ## Features
 
