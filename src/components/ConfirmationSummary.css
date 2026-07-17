@@ -1,9 +1,8 @@
 .confirmation-summary {
   max-width: 32rem;
-  margin: 2rem auto 0;
+  margin: 2rem auto;
   padding: 1.5rem;
   border: 2px solid black;
-  background-color: lightblue;
   border-radius: 0.5rem;
 }
 
@@ -12,19 +11,45 @@
   text-decoration: underline;
 }
 
+.confirmation-message,
+.confirmation-subheading {
+  color: black;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.confirmation-subheading {
+  text-decoration: underline;
+}
+
 .confirmation-details {
-  list-style: none;
   margin: 0;
   padding: 0;
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: bold;
+  list-style: none;
 }
 
+.confirmation-details li {
+  color: black;
+}
+
+/* Spacing rule to be applied only above all list items except for first item */
 .confirmation-details li + li {
   margin-top: 0.75rem;
 }
 
-li {
+.confirmation-summary button {
+  border-radius: 5px;
+  font-weight: bold;
   color: black;
-  list-style-type: none;
+  background-color: yellow;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.confirmation-summary button:focus {
+  outline: 3px solid black;
+  outline-offset: 2px;
 }

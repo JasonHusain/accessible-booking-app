@@ -2,7 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import "./BookingForm.css";
 
 //BookingForm component
-function BookingForm({ practitionersList, timesList, onBookingSubmit }) {
+function BookingForm({
+  practitionersList,
+  timesList,
+  onBookingSubmit,
+  focusSignal
+}) {
   // First Name
   const [firstName, setFirstName] = useState("");
 
@@ -62,11 +67,11 @@ function BookingForm({ practitionersList, timesList, onBookingSubmit }) {
 
   useEffect(() => {
     firstNameRef.current.focus();
-  }, []);
+  }, [focusSignal]);
 
   return (
     <section>
-      <h2 className="appointment-details-heading"> Appointment Details </h2>
+      <h2 className="appointment-details-heading"> Booking Form </h2>
 
       <form className="booking-form" onSubmit={handleFormSubmission}>
         {/* Patient Name */}
@@ -129,14 +134,14 @@ function BookingForm({ practitionersList, timesList, onBookingSubmit }) {
 
           <optgroup label="Morning">
             {" "}
-            {timesList.slice(0, 4).map((appointmentTime) => (
+            {timesList.slice(0, 3).map((appointmentTime) => (
               <option key={appointmentTime.value} value={appointmentTime.value}>
                 {appointmentTime.label}{" "}
               </option>
             ))}{" "}
           </optgroup>
           <optgroup label="Afternoon">
-            {timesList.slice(4, 8).map((appointmentTime) => (
+            {timesList.slice(3, 8).map((appointmentTime) => (
               <option key={appointmentTime.value} value={appointmentTime.value}>
                 {appointmentTime.label}{" "}
               </option>
