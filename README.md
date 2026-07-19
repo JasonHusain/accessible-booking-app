@@ -30,6 +30,15 @@ View the deployed application here: https://accessible-booking-app.vercel.app/
 - Logical focus management after form submission
 - Responsive design for mobile, tablet, and desktop devices
 
+## Accessibility Notes
+
+- The application uses semantic HTML form controls and associated `<label>` elements to support screen readers.
+- The date field uses the native HTML `<input type="date">` control to take advantage of each platform's built-in date picker.
+- During testing with VoiceOver on iOS, VoiceOver correctly announced "Date, required". However, the native date picker was not always activated with a double tap on the screen.
+- When the date field was focused, minimizing the browser and reactivating it caused the calendar to appear.
+- The issue was observed in both Safari and Chrome on iOS, suggesting it is related to the platform's implementation of native date inputs rather than the application itself.
+- A future enhancement would be to provide an accessible fallback, such as separate month, day, and year dropdowns, to improve the experience for users of assistive technologies on platforms where the native date picker is unreliable.
+
 ## Technologies Used
 
 - React
