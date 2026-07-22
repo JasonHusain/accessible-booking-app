@@ -4,6 +4,9 @@ import "./ConfirmationSummary.css";
 function ConfirmationSummary({
   practitionersList,
   timesList,
+  monthsList,
+  daysList,
+  yearsList,
   booking,
   onBookingReset
 }) {
@@ -11,16 +14,32 @@ function ConfirmationSummary({
     return null;
   }
 
+  //Destructure booking object
   const {
     firstName,
     lastName,
     practitioner,
-    appointmentDate,
+    appointmentMonth,
+    appointmentDay,
+    appointmentYear,
     appointmentTime
   } = booking;
 
+  //Optional chining to find specific booking information
   const practitionerName = practitionersList.find(
     (practitioner) => practitioner.value === booking.practitioner
+  )?.label;
+
+  const bookedMonth = monthsList.find(
+    (month) => month.value === booking.appointmentMonth
+  )?.label;
+
+  const bookedDay = daysList.find(
+    (day) => day.value === booking.appointmentDay
+  )?.label;
+
+  const bookedYear = yearsList.find(
+    (year) => year.value === booking.appointmentYear
   )?.label;
 
   const bookedTime = timesList.find(
@@ -50,7 +69,9 @@ function ConfirmationSummary({
           Patient Name: {firstName} {lastName}
         </li>
         <li>Practitioner: {practitionerName}</li>
-        <li>Date: {appointmentDate}</li>
+        <li>
+          Date: {bookedMonth} {bookedDay}, {bookedYear}{" "}
+        </li>
         <li>Time: {bookedTime}</li>
       </ul>{" "}
       <button type="button" onClick={onBookingReset}>

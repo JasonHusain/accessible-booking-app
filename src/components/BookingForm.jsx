@@ -5,6 +5,9 @@ import "./BookingForm.css";
 function BookingForm({
   practitionersList,
   timesList,
+  monthsList,
+  daysList,
+  yearsList,
   onBookingSubmit,
   focusSignal
 }) {
@@ -22,17 +25,33 @@ function BookingForm({
     setLastName(event.target.value);
   }
 
+  //Practitioner
   const [practitioner, setPractitioner] = useState("");
 
   function handlePractitioner(event) {
     setPractitioner(event.target.value);
   }
 
-  //Appointment Date
-  const [appointmentDate, setAppointmentDate] = useState("");
+  //Date Information
+  //Appointment Month
+  const [appointmentMonth, setAppointmentMonth] = useState("");
 
-  function handleAppointmentDate(event) {
-    setAppointmentDate(event.target.value);
+  function handleAppointmentMonth(event) {
+    setAppointmentMonth(event.target.value);
+  }
+
+  //Appointment Day
+  const [appointmentDay, setAppointmentDay] = useState("");
+
+  function handleAppointmentDay(event) {
+    setAppointmentDay(event.target.value);
+  }
+
+  //Appointment Year
+  const [appointmentYear, setAppointmentYear] = useState("");
+
+  function handleAppointmentYear(event) {
+    setAppointmentYear(event.target.value);
   }
 
   //Appointment Time
@@ -42,6 +61,21 @@ function BookingForm({
     setAppointmentTime(event.target.value);
   }
 
+  //Helper function to get the last day of a month
+  function getLastDayOfMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+  }
+
+  const lastDayOfMonth = getLastDayOfMonth(
+    Number(appointmentMonth),
+    Number(appointmentYear)
+  );
+
+  //Reset appointmentDay if number is too high
+  if (appointmentDay && Number(appointmentDay) > lastDayOfMonth) {
+    setAppointmentDay("");
+  }
+
   //Form submission handler
   function handleFormSubmission(event) {
     event.preventDefault();
@@ -49,7 +83,9 @@ function BookingForm({
       firstName,
       lastName,
       practitioner,
-      appointmentDate,
+      appointmentMonth,
+      appointmentDay,
+      appointmentYear,
       appointmentTime
     };
 
@@ -59,7 +95,9 @@ function BookingForm({
     setFirstName("");
     setLastName("");
     setPractitioner("");
-    setAppointmentDate("");
+    setAppointmentMonth("");
+    setAppointmentDay("");
+    setAppointmentYear("");
     setAppointmentTime("");
   }
 
@@ -111,16 +149,75 @@ function BookingForm({
             </option>
           ))}{" "}
         </select>
-        {/* Date */}
-        <label htmlFor="appointmentDate"> Date </label>
-        <input
-          type="date"
-          id="appointmentDate"
-          name="appointmentDate"
-          value={appointmentDate}
-          onChange={handleAppointmentDate}
-          required
-        />
+        {/* Date Information */}
+        {/* Month */}
+        <fieldset>
+          <legend> Appointment Date </legend>
+
+          <div className="date-controls">
+            <div>
+              <label htmlFor="month"> Month </label>
+              <select
+                id="appointmentMonth"
+                name="appointmentMonth"
+                value={appointmentMonth}
+                onChange={handleAppointmentMonth}
+                required
+              >
+                {" "}
+                <option value=""> -- Select Month -- </option>
+                {monthsList.map((month) => (
+                  <option key={month.value} value={month.value}>
+                    {month.label}{" "}
+                  </option>
+                ))}{" "}
+              </select>
+            </div>
+
+            {/* Day */}
+            <div>
+              <label htmlFor="appointmentDay"> Day </label>
+              <select
+                id="appointmentDay"
+                name="appointmentDay"
+                value={appointmentDay}
+                onChange={handleAppointmentDay}
+                required
+              >
+                {" "}
+                <option value=""> -- Select Day -- </option>
+                {daysList
+                  .filter((day) => Number(day.value) <= lastDayOfMonth)
+                  .map((day) => (
+                    <option key={day.value} value={day.value}>
+                      {day.label}{" "}
+                    </option>
+                  ))}{" "}
+              </select>
+            </div>
+
+            {/* Year */}
+            <div>
+              <label htmlFor="appointmentYear"> Year </label>
+              <select
+                id="appointmentYear"
+                name="appointmentYear"
+                value={appointmentYear}
+                onChange={handleAppointmentYear}
+                required
+              >
+                {" "}
+                <option value=""> -- Select Year -- </option>
+                {yearsList.map((year) => (
+                  <option key={year.value} value={year.value}>
+                    {year.label}{" "}
+                  </option>
+                ))}{" "}
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
         {/* Time */}
         <label htmlFor="appointmentTime"> Time </label>
         <select

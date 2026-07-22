@@ -12,6 +12,7 @@ import "./App.css";
 
 //Data
 import { practitioners, times } from "./data/appointmentOptions";
+import { months, days, years } from "./data/dateOptions";
 
 function App() {
   //Practitioner
@@ -35,12 +36,18 @@ function App() {
       <BookingForm
         practitionersList={practitioners}
         timesList={times}
+        monthsList={months}
+        daysList={days}
+        yearsList={years}
         focusSignal={formFocus}
         onBookingSubmit={saveBooking}
       />
       <ConfirmationSummary
         practitionersList={practitioners}
         timesList={times}
+        monthsList={months}
+        daysList={days}
+        yearsList={years}
         booking={bookingObject}
         onBookingReset={startNewBooking}
       />
