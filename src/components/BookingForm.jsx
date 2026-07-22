@@ -142,7 +142,7 @@ function BookingForm({
           required
         >
           {" "}
-          <option value=""> -- Select a Practitioner </option>
+          <option value=""> Select a Practitioner </option>
           {practitionersList.map((practitioner) => (
             <option key={practitioner.value} value={practitioner.value}>
               {practitioner.label}{" "}
@@ -165,7 +165,7 @@ function BookingForm({
                 required
               >
                 {" "}
-                <option value=""> -- Select Month -- </option>
+                <option value=""> Select Month </option>
                 {monthsList.map((month) => (
                   <option key={month.value} value={month.value}>
                     {month.label}{" "}
@@ -185,7 +185,7 @@ function BookingForm({
                 required
               >
                 {" "}
-                <option value=""> -- Select Day -- </option>
+                <option value=""> Select Day </option>
                 {daysList
                   .filter((day) => Number(day.value) <= lastDayOfMonth)
                   .map((day) => (
@@ -207,7 +207,7 @@ function BookingForm({
                 required
               >
                 {" "}
-                <option value=""> -- Select Year -- </option>
+                <option value=""> Select Year </option>
                 {yearsList.map((year) => (
                   <option key={year.value} value={year.value}>
                     {year.label}{" "}
@@ -227,7 +227,7 @@ function BookingForm({
           onChange={handleAppointmentTime}
           required
         >
-          <option value="">-- Select a Time --</option>
+          <option value=""> Select a Time </option>
 
           <optgroup label="Morning">
             {" "}

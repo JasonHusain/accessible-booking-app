@@ -63,6 +63,23 @@
   background-color: black;
 }
 
+fieldset {
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+legend {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+.date-controls {
+  display: flex;
+  gap: 1rem;
+}
+
 @media (hover: hover) {
   .booking-form input:hover,
   .booking-form select:hover {
