@@ -156,7 +156,7 @@ function BookingForm({
 
           <div className="date-controls">
             <div>
-              <label htmlFor="month"> Month </label>
+              <label htmlFor="appointmentMonth"> Month </label>
               <select
                 id="appointmentMonth"
                 name="appointmentMonth"
@@ -165,7 +165,7 @@ function BookingForm({
                 required
               >
                 {" "}
-                <option value=""> Select Month </option>
+                <option value=""> Month </option>
                 {monthsList.map((month) => (
                   <option key={month.value} value={month.value}>
                     {month.label}{" "}
@@ -185,7 +185,7 @@ function BookingForm({
                 required
               >
                 {" "}
-                <option value=""> Select Day </option>
+                <option value=""> Day </option>
                 {daysList
                   .filter((day) => Number(day.value) <= lastDayOfMonth)
                   .map((day) => (
@@ -207,7 +207,7 @@ function BookingForm({
                 required
               >
                 {" "}
-                <option value=""> Select Year </option>
+                <option value=""> Year </option>
                 {yearsList.map((year) => (
                   <option key={year.value} value={year.value}>
                     {year.label}{" "}
